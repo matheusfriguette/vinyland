@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "tailwind build src/styles/tailwind.css -c tailwind.config.js -o src/styles/index.css && next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "dev:api": "json-server server.json -p 3100"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.3.3",
