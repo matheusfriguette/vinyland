@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Unknown Pleasures 7\"",
+      "category": "Joy Division",
+      "description": "string",
+      "price": 119.99,
+      "discountedPrice": 89.99,
+      "image": "https://merchbar.imgix.net/product/vinylized/upc/39/825646183906.jpg?w=640&h=640"
+    },
+    {
+      "id": 2,
+      "name": "Turn On The Bright Lights 7\"",
+      "category": "Interpol",
+      "description": "string",
+      "price": 119.99,
+      "discountedPrice": null,
+      "image": "https://merchbar.imgix.net/product/vinylized/upc/45/744861054504.jpg?w=640&h=640"
+    }
+  ]
+}
