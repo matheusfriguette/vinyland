@@ -3,7 +3,11 @@
     {
       "id": 1,
       "name": "Unknown Pleasures 7\"",
-      "category": "Joy Division",
+      "category": {
+        "name": "Joy Division",
+        "friendlyURL": "joy-division"
+      },
+      "friendlyURL": "unknown-pleasures",
       "description": "string",
       "price": 119.99,
       "discountedPrice": 89.99,
@@ -12,7 +16,11 @@
     {
       "id": 2,
       "name": "Turn On The Bright Lights 7\"",
-      "category": "Interpol",
+      "category": {
+        "name": "Interpol",
+        "friendlyURL": "interpol"
+      },
+      "friendlyURL": "turn-on-the-bright-lights",
       "description": "string",
       "price": 119.99,
       "discountedPrice": null,
