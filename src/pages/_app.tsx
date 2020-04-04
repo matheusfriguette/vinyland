@@ -2,6 +2,7 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 
+import Header from '../components/header';
 import '../styles/tailwind.css';
 
 const App = ({ Component, pageProps }: AppProps) => {
@@ -13,6 +14,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           rel="stylesheet"
         />
       </Head>
+      <Header />
       <Component {...pageProps} />
     </>
   );
