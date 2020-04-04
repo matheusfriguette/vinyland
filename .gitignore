@@ -17,6 +17,7 @@
 
 # misc
 .DS_Store
+/src/styles/index.css
 
 # debug
 npm-debug.log*
