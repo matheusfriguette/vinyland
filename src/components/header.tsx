@@ -1,11 +1,19 @@
 import React from 'react';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
+
+import Cart from './cart';
+import { RootState } from '../store/root-reducer';
 
 const Header: React.FC = () => {
+  const totalItems = useSelector((state: RootState) =>
+    state.cart.products.reduce((total, product) => total + product.amount, 0),
+  );
+
   return (
     <header className="bg-black text-white shadow-md">
       <div className="container mx-auto px-2 py-4">
-        <div className="flex">
+        <div className="flex justify-between">
           <Link href="/">
             <a className="flex items-center">
               <svg
@@ -17,6 +25,25 @@ const Header: React.FC = () => {
               <h1 className="font-semibold text-lg uppercase ml-4">Vinyland</h1>
             </a>
           </Link>
+          <div className="flex items-center">
+            <div className="relative group ml-8">
+              <Link href="/cart">
+                <a className="relative block">
+                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M10 19.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.5-1.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm1.336-5l1.977-7H0l2.938 7h11.898zm4.969-10l-3.432 12H3.776l.839 2h13.239l3.474-12h1.929L24 3h-4.195z" />
+                  </svg>
+                  {totalItems > 0 && (
+                    <div className="absolute bottom-0 right-0 bg-red-500 text-xs rounded-full w-4 h-4 flex justify-center items-center -mr-3">
+                      {totalItems}
+                    </div>
+                  )}
+                </a>
+              </Link>
+              <div className="absolute right-0 hidden hover:block group-hover:block">
+                <Cart />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </header>

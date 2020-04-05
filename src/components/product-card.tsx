@@ -1,6 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { addToCart } from '../store/ducks/cart';
+import { RootState } from '../store/root-reducer';
 import { Product } from '../vinyland';
 
 type Props = {
@@ -8,6 +11,14 @@ type Props = {
 };
 
 const ProductCard: React.FC<Props> = ({ product }) => {
+  const amount = useSelector(
+    (state: RootState) =>
+      state.cart.products.find((cartProduct) => cartProduct.id === product.id)
+        ?.amount || 0,
+  );
+
+  const dispatch = useDispatch();
+
   return (
     <div className="bg-white border rounded shadow-md h-full overflow-hidden hover:border-green-500">
       <div className="relative">
@@ -59,6 +70,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
           <button
             type="button"
             className="group bg-green-600 text-white rounded-lg overflow-hidden hover:bg-green-700 focus:outline-none"
+            onClick={() => dispatch(addToCart(product))}
           >
             <div className="flex items-center">
               <div className="px-2 py-1">
@@ -66,6 +78,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                     <path d="M10 19.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.5-1.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm1.336-5l1.977-7H0l2.938 7h11.898zm4.969-10l-3.432 12H3.776l.839 2h13.239l3.474-12h1.929L24 3h-4.195z" />
                   </svg>
+                  {amount > 0 && <div className="text-xs ml-1">{amount}</div>}
                 </div>
               </div>
               <div className="bg-green-500 font-semibold text-xs uppercase px-2 py-1 group-hover:bg-green-600">
